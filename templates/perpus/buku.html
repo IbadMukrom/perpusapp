@@ -1,0 +1,39 @@
+{% extends "perpus/base.html" %}
+{% block content %}
+
+    <div class="card card-body"> 
+    <h1 style="text-align: center;">Data Buku</h1>
+    <p style="float: right;">
+        <a href="{% url 'tambah_buku' %}" class="btn btn-info btn-sm" style="width: fit-content; float: right;"> <i class="fa fa-plus"></i>Tambah Buku</a>
+    </p> 
+    
+        <table class="table  table-hover table-bordered table-sm">
+            <thead class="thead-dark">
+            <tr>
+                <th>No</th>
+                <th>Nama Buku</th>
+                <th>Nama Pengarang</th>
+                <th>Jumlah Buku</th>
+                <th>Kategori Buku</th>
+                <th>Proses</th>
+            </tr>
+            </thead>
+            
+            {% for j in buku %}
+            <tr>
+                <th>{{forloop.counter}}</th>
+                <td>{{j.nama_buku}}</td>
+                <td>{{j.nama_pengarang}}</td>
+                <td>{{j.jumlah_buku}}</td>
+                <td>{{j.kategori}}</td>
+                <td>
+                    <a href="{% url 'edit_buku' j.id %}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                    <a href="{% url 'hapus_buku' j.id %}" class="btn btn-danger btn-sm" onclick="return confirm ('hapus data ?')"><i class="fa fa-trash-o"></i> Hapus</a>
+                    
+                </td>
+            </tr>
+            {% endfor%}
+        </table>
+    </div>
+
+{% endblock content %}

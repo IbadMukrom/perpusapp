@@ -1,0 +1,41 @@
+{% extends "perpus/base.html" %}
+
+{% block content %}
+
+<div class="card card-body">
+    <h1 style="text-align: center;">Data Anggota</h1>
+    <p style="float: right;">
+    <a href="{% url 'tambah_anggota' %}" class="btn btn-default btn-sm btn-info" style="width: fit-content; float: right;"> <i class="fa fa-plus"></i>Tambah Anggota</a>
+    </p>
+    <table class="table  table-bordered table-hover">
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>Pekerjaan</th>
+            <th>Umur</th>
+            <th>No Hp</th>
+            <th>Proses</th>
+        </tr>
+        {% for k in anggotaaa  %}
+        <tr>
+            <th>{{forloop.counter}}</th>
+            <td>{{k.nama}}</td>
+            <td>{{k.alamat}}</td>
+            <td>{{k.pekerjaan}}</td>
+            <td>{{k.umur}}</td>
+            <td>{{k.no_hp}}</td>
+            <td>
+                <a href="{% url 'edit_anggota' k.id %}" class="btn btn-sm btn-info" onclick="return confirm('edit anggota?')"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                <a href="{% url 'hapus_anggota' k.id %}" class="btn btn-sm btn-danger" onclick="return confirm('hapus anggota?')"><i class="fa fa-trash-o"></i> Hapus</a>
+                
+            </td>
+        
+        </tr>
+          
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock content %}

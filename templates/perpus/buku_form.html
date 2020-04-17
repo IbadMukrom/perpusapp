@@ -1,0 +1,23 @@
+{%extends 'perpus/base.html'%}
+{% load crispy_forms_tags %}
+{%block content%}
+
+<div class="col-xs-1 center-block">
+<div class="row" style="align-items: center;">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                
+                <input type="submit" class="btn btn-sm btn-primary" name="Submit">
+            </form>
+        
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+{% endblock content%}

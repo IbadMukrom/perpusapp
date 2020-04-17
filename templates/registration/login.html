@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ </head>
+
+ <body style="background-color: cornflowerblue;">
+    <div class="card border-primary mb-3" style="max-width: 100rem;">          
+        <div class="card card-block d-flex" style="height: 37rem">
+            <div class="card-body align-items-center d-flex justify-content-center" style="background-color:cornflowerblue">
+            
+          <form action="" method="post">
+              {% csrf_token %}
+              {% if messages %}
+              {% for message in messages %}
+                <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+              {% endfor %}
+            {% endif %}
+          
+            {% if form.errors %}
+              <div class="alert alert-error">
+                <h4>Please fix the following errors</h4>
+                <ul>
+                  {% for field in form %}
+                    {% if field.errors %}
+                      {% for error in field.errors %}
+                        <li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+                {% if form.non_field_errors %}
+                  {{ form.non_field_errors }}
+                {% endif %}
+              </div>
+            {% endif %}
+
+
+              <div class="form-group">
+                <label for="usr">Username:</label>
+                <input type="text" class="form-control" id="usr" name="username">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" name="password">
+              </div>
+              <hr>
+              <button type="submit" class="btn btn-danger btn-sm">Submit</button>
+              <a href="{% url 'signup' %}" class="btn btn-warning btn-sm"> belum punya akun? daftar disini</a>
+          </form>
+          
+        </div>
+      </div>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <!-- cdn datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"> </script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+    <title>Base</title>
+
+    <script>
+      $(document).ready(function() {
+        $('#tables').DataTable();
+      } );
+    </script>
+    <style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      .topnav {
+        overflow: hidden;
+        background-color:steelblue;
+      }
+      
+      .topnav a {
+        float: left;
+        color: whitesmoke;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 20px;
+      }
+      
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      
+      .topnav a.active {
+        background-color: #4CAF50;
+        color: white;
+      }
+      </style>
+
+</head>
+<body>
+    
+      <div class="topnav">
+        <a href="{% url 'home' %}">Dashboard</a>
+        <a href="{% url 'data_anggota' %}">Anggota</a>
+        <a href="{% url 'data_buku' %}">Data Buku</a>
+        <a href="{% url 'peminjaman' %}">Peminjaman</a>
+        <a href="{% url 'logout' %}" style="float: right;"><i class="btn btn-sm fa fa-sign-out" style="font-size:20px">Logout</i></a>
+
+      </div>
+    <!-- <div class="container-fluid"> -->
+        <div class="card card-body">
+            <div class="container"> 
+        {%block content%}
+
+        {%endblock content%}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
